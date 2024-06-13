@@ -1,0 +1,289 @@
+* {
+    text-transform: uppercase;
+    font-family: rubik,sans-serif;
+}
+/* name store */
+.navbar-brand span {
+    font-weight: bold;
+    color: #000000;
+    font-size: 24px;
+}
+
+/* nav bar */
+.custom_nav-container .navbar-nav {
+    margin: auto;
+}
+/* ตกแต่งปุ่มnav bar แต่ละปุ่ม */
+.custom_nav-container .navbar-nav .nav-item .nav-link {
+    font-weight: bold;
+    padding: 5px 25px;
+    color: #636363;
+    text-align: center;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.navbar-nav .nav-item:hover .nav-link,
+.custom_nav-container .navbar-nav .nav-item.active .nav-link {
+    color: #ffffff;
+    background-color: #5c5c5c;
+}
+/* footer */
+.container {
+    text-align: center;
+    margin-top: 10%;
+}
+
+
+/* MAIN ADDMIN  START*/
+.main-admin {
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    row-gap: 1rem;
+    column-gap: 1rem;
+}
+/* ตกแต่งปุ่มในหน้า main สำหรับ admin */
+.main-admin-add,
+.main-admin-edit,
+.main-admin-delete,
+.main-super-admin {
+    width: 33%; 
+    height: 300px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    justify-content: center;
+    color: #fff;
+    transition: 0.2s;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #000000, #888); 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
+    border-radius: 10px;
+} 
+
+.main-admin-add:hover,
+.main-admin-edit:hover,
+.main-admin-delete:hover,
+.main-super-admin:hover {
+    color: #fff;
+    background-color: #5e5e5e;
+    text-decoration: none;
+    transform: scale(1.03);
+}
+/* ตกแต่งข้อความ */
+.main-admin-add h5,
+.main-admin-edit h5,
+.main-admin-delete h5,
+.main-super-admin h5 {
+    font-size: 40px;
+    text-align: center;
+}
+
+
+/* EDIT ADMIN */ 
+/* DELETE ADMIN */
+
+/* กำหนดระยะห่างจาก nav bar ของ box search */
+.edit-admin-serch  {
+    margin-top: 4%;
+    text-align: center;
+}
+
+/* ตกแต่งในส่วนของการค้นหา */
+/* กำหนดความกว้างของกล่อง search */
+#edit-search ,#delete-search{
+    width: 300px;
+    margin-bottom: 5%;
+}
+
+#edit-serch-submit {
+    color: #fff;
+    background-color: #333;
+}
+
+/* ตกแต่งตาราง */
+.edit-product-table  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-product-list   {
+    border-collapse: collapse;
+
+}
+
+.edit-product-list td, th {
+    border: 1px solid #333;
+    text-align: center;
+    padding: 10px;
+}
+/* ทำให้ตารางสลับสีโดยกำหนดเป็นตารางที่เป็นเลขคู่*/
+.edit-product-list tr:nth-child(even) {
+    background-color: #dddddd;
+}
+/* ตกแต่งปุ่ม */
+#delete-product-button ,#edite-product-button,#find_del-product-button{
+    background-color: #ad3232;
+    color: #fff ;   
+    border: none;
+    transition: 0.2s;
+    border-radius: 5px;
+}
+
+#delete-product-button:hover ,#edite-product-button:hover,#find_del-product-button:hover {
+    background-color: #a80000;
+}
+/* กำหนดความกว้างของกล่องจำนวนคงเหลือ */
+#amount-edit-product  {
+    width: 100px;
+}
+
+
+/* ADMIN ADD */
+
+.add-product-name{
+    margin-top: 2%;
+    margin-bottom: 3%;
+    text-align: center;
+}
+.add-product-name h4{
+    font-size: 40px;
+}
+.add-product-form {
+    display: flex;
+    justify-content: center;
+}
+.add-product-fieldset{
+    border: 1px solid;
+    background-color: #e2e2e2;
+    padding: 30px;
+}
+/* เข้าถึงแต่ละ input */
+#code-product,#name-product,
+#brand-product,#series-product,#detail-product,#price-product{
+    width: 25%;
+    height: 30px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dadada;
+    color: #888;
+    text-align: left;
+}
+
+#name-product,#code-product ,#series-product,#brand-product{
+    width: 60%;
+}
+
+#add-product-save , #add-product-clear,#edit-product-save {
+    width: 80px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+#add-product-save:hover , #add-product-clear:hover ,#edit-product-save:hover{
+    background-color: #5e5e5e;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+}
+
+
+
+.add-product-button {
+    font-size: 17px;
+}
+
+
+/* PRODUCT MODAL ในหน้า edit*/
+
+.edit-product-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .modal-product a ,.modal-content-product a {
+    color: #000;
+    background-color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .modal-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    background: rgba(77, 77, 77, 0.7);
+    transition: all 0.4s;
+    
+  }
+/* ให้ปุ่มนี้เปิดจาก id ที่กำหนด */
+  .modal-product:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .modal-content-product {
+    position: relative;
+    height: 60% ;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 5px;
+   
+  }
+  .modal-content-product h1 {
+    text-align: center;
+  }
+
+  .close-modal-product {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    
+  }
+  .add-product-form {
+    text-align: left;
+  }
+  .close-modal-product:hover {
+    color: black;
+    background-color: #d3d1d1;
+  }
+
+  .content-product {
+    width: 30vw;
+    height: 50vw;
+    object-fit: cover;
+  }
+
+  .content-product{
+    display: flex;
+  }
+
+  .detail-product-modal {
+    margin-left: 50px;
+  }
+
+
+
+
+
+
+
+
+
+
+

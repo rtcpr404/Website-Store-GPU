@@ -1,0 +1,23 @@
+{
+  "name": "gr4_pj1_id6487027_041_062_074",
+  "version": "1.0.0",
+  "description": "หลังจากที่เเตกไฟล์ gr4_pj1_ID6487027_041_062_074.zip มาเเล้วให้ \r เปิด Visual studio code/file/open folder/gr4_pj1_ID6487027_041_062_074 ที่เเตกไฟล์ออกมาเพื่อเปิดโปรเจ็ค\r หลังจากที่เปิดโปรเจ็คมาเเล้วใน Visual studio code จะเเสดงชื่อโปรเจ็คว่า gr4_pj1_ID6487027_041_062_074 \r โดยจะมีโฟลเดอร์ admin,css,detailproduct,filterproduct,images เเละไฟล์ index.html,main-admin.html,readme.txt",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon client.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.10.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

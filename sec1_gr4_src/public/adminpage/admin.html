@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/images/fevicon/fevicon.png" type="image/gif" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <title>Admin Management</title>
+    <style>
+        /* CSS */
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .admin-container {
+            border: 1px solid #101010;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 0 auto 20px auto; /* จัดให้เนื้อหาตรงกลางตามแนวนอน */
+            max-width: 800px; /* เพิ่มความกว้างให้เนื้อหาไม่ใหญ่เกินไป */
+        }
+
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h2 {
+            margin: 0;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+
+        li {
+            margin-top: 5px;
+        }
+
+        h1 {
+            margin: 30px 0; /* เพิ่มระยะห่างด้านบนของหัวข้อ */
+        }
+
+        /* CSS สำหรับ Search และ Add Admin Button */
+        div {
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+        }
+
+        button {
+            margin-top: 5px;
+            margin-bottom: 2%;
+            padding: 5px 10px; /* เพิ่มการเติมระยะขอบของปุ่ม */
+            border-radius: 5px; /* เพิ่มขอบมน */
+            background-color: #fff9e9; /* เปลี่ยนสีพื้นหลังของปุ่ม */
+            border: 1px solid #252424; /* เพิ่มขอบ */
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+        }
+
+        button#editButton:hover {
+            background-color: #2f33ff; /* เปลี่ยนสีพื้นหลัง */
+            color: #ffffff; /* เปลี่ยนสีข้อความ */
+        }
+
+        button#deleteButton:hover,button#delete_admin:hover {
+            background-color: #fe1414; /* เปลี่ยนสีพื้นหลัง */
+            color: #ffffff; /* เปลี่ยนสีข้อความ */
+        }
+
+        button#searchButton:hover,button#addAdminButton:hover {
+            background-color: #2f33ff; /* เปลี่ยนสีพื้นหลัง */
+            color: #ffffff; /* เปลี่ยนสีข้อความ */
+        }
+
+        button#select_admin:hover{
+            background-color: #e39b0afd; /* เปลี่ยนสีพื้นหลัง */
+            color: #ffffff; /* เปลี่ยนสีข้อความ */
+        }
+
+        button#searchButton,button#addAdminButton,button#select_admin, button#delete_admin{
+            padding: 10px 20px; /* ปรับขนาดของปุ่ม */
+            border-radius: 5px;
+            background-color: #101010;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* CSS สำหรับแยกส่วนของ Admin ออกเป็นซ้ายและขวา */
+        .admin-details-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap; /* ให้ข้อมูล admin แสดงเป็นหลายบรรทัดเมื่อเต็มรายการ */
+        }
+
+        .admin-details-container .admin-details {
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h2 {
+            margin: 0;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* CSS สำหรับปุ่ม Add Admin */
+        .btn-container {
+            display: flex;
+            justify-content: center; /* จัดให้ปุ่มอยู่กลางแนวนอน */
+            margin-top: 20px; /* ระยะห่างด้านบน */
+            margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+        }
+
+        /* CSS สำหรับรูปภาพ */
+        .admin-image {
+            max-width: 100%;
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: auto; /* จัดให้อยู่ตรงกลาง */
+            margin-top: 20px;
+        }
+    
+        .navbar-brand span {
+        font-weight: bold;
+        color: #000000;
+        font-size: 24px;
+        text-transform: uppercase;
+        }
+        
+        .custom_nav-container .navbar-nav {
+            margin: auto;
+        }
+        
+        .custom_nav-container .navbar-nav .nav-item .nav-link {
+            font-weight: bold;
+            padding: 5px 25px;
+            color: #636363;
+            text-align: center;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .navbar-nav .nav-item:hover .nav-link,
+        .custom_nav-container .navbar-nav .nav-item.active .nav-link {
+            color: #ffffff;
+            background-color: #5c5c5c;
+        }
+
+        .footer_section {
+            background-color: #dddddd;
+            text-align: center;
+            }
+
+        .footer_section p {
+            padding: 15px 0;
+            margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/adminpage/admin.html"> Information</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/adminpage/add admin.html"> add</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/adminpage/update admin.html">edit</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/main-admin.html"> main</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        </head>
+    <header>
+        <h1>Information Admin</h1>
+    </header>
+
+    <!-- Search -->
+    <div>
+        <h4><label for="search">Search Admin:</label>
+            <input type="text" id="search" name="search" placeholder="search by ID">
+            <button type="button" id="searchButton" >Search</button>
+
+            <button type="button" id="select_admin">Admin All</button>
+            <button type="button" id="delete_admin">Delete</button>
+            <!-- เพิ่มเลือกชื่อหรือ ID ในฟอร์มค้นหา -->
+      
+        </h4>
+        
+    </div>
+
+    <!-- Admin Details -->
+    <!-- <div class="admin-container" id="admin-container"> </div> -->
+
+    <!-- <div class="output" id="output"></div> -->
+    <script src="./callAdmin.js"></script>
+                
+    <!-- Add Admin Button -->
+    <div class="btn-container">
+        <button type="button" id="addAdminButton" onclick="location.href='add admin.html'">+ Add Admin</button>
+    </div>
+    <!-- footer section -->
+  <section class="footer_section" id="footer_section">
+    <div class="container">
+      <p>
+        &copy;SISTEM : <a href="/images/refer.html">Reference</a>
+      </p>
+    </div>
+  </section>
+  <!-- footer section -->
+</body>
+</html>

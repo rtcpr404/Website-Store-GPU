@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- icon -->
+  <link rel="icon" href="images/fevicon/fevicon.png" type="image/gif" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="../css/style.css" rel="stylesheet" />
+  <!-- <script src="./login.js"></script> -->
+  <title>SISTEM</title>
+
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            SISTEM
+          </span>
+        </a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/detailproduct/product.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/adminpage/About Us.html"> About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- end header section -->
+
+    <!-- slider section -->
+    <section class="slider_section">
+      <div class="slider_bg_box">
+        <img src="/images/slider-bg-Recovered.jpg">
+      </div>
+      <div id="customCarousel1">
+        <div class="container ">
+          <div class="col-md-7">
+            <div class="detail-box">
+              <h1>
+                SISTEM ONLINE SHOP
+              </h1>
+              <p>
+                <!-- text -->
+              </p>
+              <div class="btn-box">
+                <a href="#login" class="btn1" id="signInLink">
+                  LOG IN
+                </a>
+                <a href="" class="btn2">
+                  REGISTER
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- LOG IN  -->
+  <div id="login" class="modal-login">
+    <div class="modal-content-login">
+      <h1>LOG IN</h1>
+      <p>
+      <fieldset class="loginbox"><br><br>
+        <label for="txtemail"></label>
+        <input type="text" name="txtemail" id="txtemail" placeholder="Username" required><br><br>
+        <label for="txtpasswd"></label>
+        <input type="password" name="txtpasswd" id="txtpasswd" required placeholder="Password"> <br><br><br><br>
+        <div class="loginforgot">
+          <a href="#">Forgot Your Password?</a> <br><br><br>
+        </div>
+        <div class="loginbutton">
+          <input type="button" value="Log In" id="loginbutton">
+        </div>
+
+        <div class="login-google-button">
+          <a href="https://accounts.google.com/o/oauth2/auth?
+                client_id=YOUR_CLIENT_ID&
+                redirect_uri=YOUR_REDIRECT_URI&
+                response_type=code&
+                scope=openid%20email%20profile" class="google-login">
+            <img src="/images/fevicon/google_logo.png" alt="Google Logo">
+            <span>Login with Google</span>
+          </a>
+        </div>
+      </fieldset>
+      </p>
+      <a href="#" class="close-modal-login">&times;</a>
+    </div>
+  </div>
+
+
+  <!-- product section Nvdia-->
+
+  <section class="product_section">
+    <div class="container">
+      <h2>
+        <div class="product_heading">
+      </h2><input style=" padding: 10px 15px;width: 100%;
+          background-color: #383838;
+          color: #ffffff;
+          border-radius: 5px;
+          font-size: 24px;
+          margin-top: 10px;" type="button" value="All Product" id="product_heading">
+      </h2>
+    </div>
+
+    <div class="product_container" id="nvdia_all_prod"></div>
+    <!-- --- -->
+
+
+    <!-- end product section -->
+  </section>
+  <script>
+    const rootURL = "http://localhost:8028/";
+
+    let login_submit = document.querySelector("#loginbutton");
+    let user_login_input = document.querySelector("#txtemail");
+    let pass_login_input = document.querySelector("#txtpasswd");
+    let user_login,
+      password_login,
+      token = "";
+
+    async function callLoginpage(url, method, atoken = "", sentData = {}) {
+      let data;
+      if (method === "selectall") {
+        let response = await fetch(url, {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + atoken,
+          },
+        });
+        data = await response.json();
+      } else if (method === "login") {
+        let aMethod;
+        if (method === "insert" || method === "login") {
+          aMethod = "POST";
+        } else if (method === "update") {
+          aMethod = "PUT";
+        } else if (method === "delete") {
+          aMethod = "DELETE";
+        }
+        let response = await fetch(url, {
+          method: aMethod,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + atoken,
+          },
+          body: JSON.stringify(sentData),
+        });
+        data = await response.json();
+      }
+
+      return data;
+    }
+    login_submit.addEventListener("click", () => {
+      console.log("login submit")
+      let user_login_data = {
+        login_sistem: {
+          username_sistem: user_login_input.value,
+          password_sistem: pass_login_input.value,
+        },
+      };
+
+      console.log(user_login_data)
+      callLoginpage(rootURL + "login_info", "login", token, user_login_data).then((data) => {
+        console.log(data.decoded)
+        if (data.decoded) {
+
+
+          console.log(data.decoded)
+          localStorage.setItem('token', data.token)
+          window.location = '/home'
+          console.log(data.data)
+          alert("Log in Success")
+          // console.log(data.token)
+
+        } else {
+          alert("fail")
+        }
+        console.log(token);
+      });
+    });
+
+    let nvdia_all_product = document.querySelector("#product_heading");
+    if (nvdia_all_product) {
+      nvdia_all_product.addEventListener("click", () => {
+        callLoginpage(rootURL + "product_info", "selectall").then((data) => {
+          console.log(data)
+          if (data.data) {
+            alert(data.message)
+
+            // let array_data = {
+            document.getElementById("nvdia_all_prod").innerHTML = generateHTML(data);
+
+            function generateHTML(data) {
+              // สร้าง HTML code โดยใช้ลูป
+              const product_nvdia = data.data.map(item => `
+                <style>
+                  /* CSS */
+                  body {
+                  align-items: center;
+                }
+                .product_all_index {
+                    align-items: center;
+                    background-color: #ececec;
+                  }
+                </style>
+                <body>
+                <div class="product_all_index" style="border-radius: 10px;  padding: 10px; margin: 10px; float: left; width: 30%;">
+                  <img src="${item.pic_product}">
+                  <h3>Name: ${item.name_product}</h3>
+                  <h4>Price : ${item.price_product}</h4>
+                </div>
+                </body>
+            `).join('');
+
+
+              return product_nvdia;
+            }
+
+          } else {
+            alert("no product")
+          }
+        })
+      })
+    }
+
+  </script>
+  <!-- service section -->
+
+  <section class="service_section">
+    <div class="row">
+      <div class="col-md-6 col-lg-3">
+        <div class="box ">
+          <div class="img-box">
+            <img src="images/service_img/feature-1.png">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Fast Delivery
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="box ">
+          <div class="img-box">
+            <img src="images/service_img/feature-2.png">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Free Delivery
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="box ">
+          <div class="img-box">
+            <img src="images/service_img/feature-3.png">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Warranty 3YEAR
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="box ">
+          <div class="img-box">
+            <img src="images/service_img/feature-4.png">
+          </div>
+          <div class="detail-box">
+            <h5>
+              24HR Support
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- end service section -->
+
+  <!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      <p>
+        &copy;SISTEM : <a href="/images/refer.html">Reference</a>
+      </p>
+    </div>
+  </section>
+  <!-- footer section -->
+
+</body>
+
+</html>

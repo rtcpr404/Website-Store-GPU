@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="/images/fevicon/fevicon.png" type="image/gif" />
+  <title>ADD PRODUCT</title>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+  <link rel="stylesheet" href="/css/css.css">
+  
+</head>
+
+<body>
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="/index.html">
+          <span>
+            SISTEM
+          </span>
+        </a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a class="nav-link" href="/index.html">Home</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/adminpage/add-del-edit-product/edit-product.html">edit</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/adminpage/add-del-edit-product/add-product.html"> add</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/adminpage/add-del-edit-product/delete-product.html"> delete</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/main-admin.html"> main</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    </head>
+    <!-- header section end -->
+
+    <!-- form info. of new product start -->
+    <div class="add-product-name">
+      <h4>add product</h4>
+    </div>
+    <div class="add-product">
+      <form class="add-product-form">
+        <fieldset class="add-product-fieldset">
+          <div class="add-product-page-left">
+
+            <label for="code-product">รหัสสินค้า</label>
+            <input type="text" id="code-product" name="code-product" placeholder="x-123"><br><br>
+
+            <label for="name-product">ชื่อสินค้า</label>
+            <input type="text" id="name-product" name="name-product"> <br><br>
+
+            <label for="picture-product">รูปภาพ </label>
+            <input type="text" name="picture-product" id="picture-product" required><br><br>
+
+            <label for="brand-product">brand </label>
+            <input type="text" name="brand-product" id="brand-product" required><br><br>
+
+            <label for="series-product">series </label>
+            <input type="text" name="series-product" id="series-product" required><br><br>
+
+            <label for="suppier-product">ยี่ห้อ </label>
+            <input type="text" name="suppier-product" id="suppier-product" required><br><br>
+
+
+            <label for="detail-product">detail more</label>
+            <input type="text" id="detail-product" name="detail-product"><br><br>
+
+            <label for="price-product"> price</label>
+            <input type="number" id="price-product" name="price-product"><br><br>
+
+            <div class="add-product-button">
+              <button id="add-product-save" type="button">save</button>
+              <button id="add-product-clear" type="reset">clear</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+       <!-- form info. of new product start -->
+
+    <!-- footer section -->
+    <footer>
+      <div class="container">
+        <p>
+          &copy;SISTEM : <a href="/images/refer.html">Reference</a>
+        </p>
+      </div>
+    </footer>
+    <!-- footer section -->
+
+    
+    <script src="./callProduct.js"></script>
+</body>
+</html>

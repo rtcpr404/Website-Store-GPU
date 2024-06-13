@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/images/fevicon/fevicon.png" type="image/gif" />
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <title>Update Admin Information</title>
+    <style>
+        /* CSS */
+        body {
+            text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .admin-container {
+            border: 1px solid #101010;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            max-width: 800px; /* เพิ่มความกว้างให้ใหญ่ขึ้น */
+            flex: 1;
+            margin-right: 30px;
+            position: relative;
+        }        
+        h1 {
+            margin: 30px 0; /* เพิ่มระยะห่างด้านบนของหัวข้อ */
+        }
+
+        /* CSS สำหรับ Search และ Add Admin Button */
+        div {
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+        }
+        
+        button {
+            margin-top: 5px;
+            margin-bottom: 2%;
+            padding: 5px 10px; /* เพิ่มการเติมระยะขอบของปุ่ม */
+            border-radius: 5px; /* เพิ่มขอบมน */
+            background-color: #fff9e9; /* เปลี่ยนสีพื้นหลังของปุ่ม */
+            border: 1px solid #252424; /* เพิ่มขอบ */
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        button {
+            margin-top: 5px;
+            margin-bottom: 2%;
+            padding: 5px 10px; /* เพิ่มการเติมระยะขอบของปุ่ม */
+            border-radius: 5px; /* เพิ่มขอบมน */
+            background-color: #fff9e9; /* เปลี่ยนสีพื้นหลังของปุ่ม */
+            border: 1px solid #252424; /* เพิ่มขอบ */
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+        }
+
+        button:hover {
+            background-color: #2f33ff; /* เปลี่ยนสีพื้นหลัง */
+            color: #ffffff; /* เปลี่ยนสีข้อความ */
+        }
+
+        form {
+            text-align: left;
+        }
+        label, input, textarea {
+            margin: 10px ;
+        }
+
+        label,input{
+            margin: auto;  
+        }
+        
+        input {
+            width: 50%;
+
+            margin-bottom: 15px;
+        }
+
+        input#cldBD{
+            width:20%;
+        }
+        input#txtage{
+            width:10%;
+        }
+
+        button[type="submit"] {
+            margin-right: 10px; /* ปรับค่าตามที่คุณต้องการ */
+        }
+
+        select[name="type"] {
+            margin-left: 10px; /* ปรับค่าตามที่คุณต้องการ */
+        }
+
+        /* CSS สำหรับรูปภาพ */
+        .adminImage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #adminImage {
+            max-width: 100%;
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: auto;
+            margin-top: 10px;
+        }
+        .navbar-brand span {
+            font-weight: bold;
+            color: #000000;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        
+        .custom_nav-container .navbar-nav {
+            margin: auto;
+        }
+        
+        .custom_nav-container .navbar-nav .nav-item .nav-link {
+            font-weight: bold;
+            padding: 5px 25px;
+            color: #636363;
+            text-align: center;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .navbar-nav .nav-item:hover .nav-link,
+        .custom_nav-container .navbar-nav .nav-item.active .nav-link {
+            color: #ffffff;
+            background-color: #5c5c5c;
+        }
+        .footer_section {
+            background-color: #dddddd;
+            text-align: center;
+            }
+
+        .footer_section p {
+            padding: 15px 0;
+            margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/adminpage/admin.html"> Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/adminpage/add admin.html"> add</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/adminpage/update admin.html">edit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/main-admin.html"> main</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        </head>
+    <header>
+        <h1>Update Admin Information</h1>
+    </header>
+
+    <!-- Admin Details -->
+    <div class="admin-details-container">
+        <!-- Admin 1 -->
+        <div class="admin-container">
+            <form>
+                <label for="txtfirstname">First name :</label>
+                <input type="text" id="txtfirstname" required><br>
+    
+                <label for="txtlastname">Last name :</label>
+                <input type="text" id="txtlastname" required><br>
+
+                <label for="txtidentificationNo">Identification No :</label>
+                <input type="text" id="txtidentificationNo" required pattern="[0-9]{13}"
+                            title="เลขบัตรประชาชน 13 หลัก "><br>
+                
+                <label for="txtaddress">Address :</label>
+                <input type="text" id="txtaddress" required><br> 
+                
+                <label for="cldBD">Birth date :</label>
+                <input type="date" id="cldBD" required><br>
+
+    
+                <label for="txtAdminID">Admin ID :</label>
+                <input type="text" id="txtAdminID" required><br>
+    
+                <label for="txtPhonenumber">Phone number :</label>
+                <input type="tel" id="txtPhonenumber" required pattern="[0-9]{10}"
+                        title="Phone number: xxx-xxxxxxx"><br>
+    
+                <label for="txtemail">Email :</label>
+                <input type="email" id="txtemail" required><br>
+    
+                other : <br>
+                <textarea id="txtothers" rows="4" cols="100" required></textarea><br>
+    
+                <div class="btn-container">
+                    <button type="button" id="update_admin_submit">Update</button>
+                    <button type="reset">Clear</button><br>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./callAdmin.js"></script>
+<!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      <p>
+        &copy;SISTEM : <a href="/images/refer.html">Reference</a>
+      </p>
+    </div>
+  </section>
+  <!-- footer section -->
+  
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="/images/fevicon/fevicon.png" type="image/gif" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>About Us</title>
+    <style>
+        /* CSS styles ของคุณ */
+        * {
+            font-family: rubik, sans-serif;
+        }
+
+        .about-us-page h2 {
+            margin-top: 4%;
+            margin-bottom: 4%;
+            text-align: center;
+        }
+
+        .con-cen {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .about-container {
+            position: relative;
+            width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* flex-wrap: wrap; */
+            padding: 10px;
+            text-align: center;
+        }
+
+        .about-container .card {
+            position: relative;
+            height: auto;
+            background-color: #fff;
+            padding: 25px;
+            width: 300px; /* ปรับความกว้าง */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+            background-color: #cacaca;
+        }
+
+        .card:hover {
+            height: 600px;
+            padding: auto;
+        }
+
+        .about-container .card .imgbox {
+            position: relative;
+            width: 100%; /* ทำให้ความกว้างเต็ม container */
+            height: 300px; /* ปรับความสูงตามที่เหมาะสม */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .card {
+            margin-left: 20px;
+        }
+        .card img {
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%; /* ทำให้รูปภาพเต็ม container */
+            height: auto; /* ทำให้รูปภาพปรับขนาดตามกว้างของ container */
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .about-container .card .content {
+            position: relative;
+            margin-top: 140px;
+            padding: 10px 15px;
+            text-align: center;
+            color: #111;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+        }
+
+        .about-container .card:hover .content {
+            visibility: visible;
+            opacity: 1;
+            margin-top: 50px;
+            transition-delay: 0.3s;
+        }
+
+        .about-container .card #ig {
+            color: #ffffff;
+        }
+
+        .about-container .card .content h3 {
+            margin-bottom: 10px;
+            /* เพิ่มระยะห่างด้านล่างของตัวอักษร */
+        }
+        .content h3 {
+            font-size: 26px;
+        }
+
+        .about-container .card .content h5 {
+            margin-top: 10px;
+            /* เพิ่มระยะห่างด้านบนของตัวอักษร */
+        }
+
+        .about-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .btn-container{
+            margin-top: 50px;
+        }
+        .btn:hover {
+            background-color: #919090;
+            color: #cacaca ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="/index.html">
+                    <span>
+                        SISTEM
+                    </span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/detailproduct/product.html">Products</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/adminpage/About Us.html"> About</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- end header section -->
+
+        <div class="about-us-page">
+            <h2>ABOUT US</h2>
+        </div>
+        <div class="con-cen">
+            <div class="about-container">
+                <!-- รูป1 -->
+                <div class="card">
+                    <div class="imgbox">
+                        <img src="/images/photoabout/poo.jpg" alt="Member 1">
+                    </div>
+                    <div class="content">
+                        <h3>Supitchaya <br> Aneksupapon<dr>
+                                <h5> ID: 6587041 <br>section 1
+                                    <div class="btn-container">
+                                        <a href="mailto:supitchaya.ana@student.mahidol.edu" class="btn">Email</a> |
+                                        <a href="https://www.instagram.com/pi_pinky44/?hl=en" class="btn" id="ig">IG
+                                        </a>
+                                    </div>
+                    </div>
+                </div>
+                <!-- รูป2 -->
+                <div class="card">
+                    <div class="imgbox">
+                        <img src="/images/photoabout/---.jpg" alt="Member 2">
+                    </div>
+                    <div class="content">
+                        <h3>Rittichon <br> Phonrat <dr>
+                                <h5> ID: 6587062<br>section 1
+                                    <div class="btn-container">
+                                        <a href="mailto:rittichon.pho@student.mahidol.ac.edu" class="btn">Email</a> |
+                                        <a href="https://www.instagram.com/rtc_pr/?hl=en" class="btn" id="ig">IG</a>
+                                    </div>
+                    </div>
+                </div>
+                <!-- รูป3 -->
+                <div class="card">
+                    <div class="imgbox">
+                        <img src="/images/photoabout/a¦+.jpg" alt="Member 3">
+                    </div>
+                    <div class="content">
+                        <h3>Jirachaya <br> Rachpolsaen <dr>
+                                <h5> ID: 6587074<br>section 1
+                                    <div class="btn-container">
+                                        <a href="mailto:jirachaya.rac@student.mahidol.edu" class="btn">Email</a> |
+                                        <a href="https://www.instagram.com/bbellechy/?hl=en" class="btn" id="ig">IG</a>
+                                    </div>
+                    </div>
+                </div>
+                <!-- รูป4 -->
+                <div class="card">
+                    <div class="imgbox">
+                        <img src="/images/photoabout/aof.jpg" alt="Member 3">
+                    </div>
+                    <div class="content">
+                        <h3>Nuttapong <br> Laungphiboon<dr>
+                                <h5> ID: 6487027 <br>section 1</h5>
+                                    <!-- <p></p> -->
+                                    <div class="btn-container">
+                                        <a href="mailto:Nuttapng.lua@student.mahidol.edu" class="btn">Email</a> |
+                                        <a href="https://www.instagram.com/aof_kie/" class="btn" id="ig">IG</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer section -->
+        <section class="footer_section">
+            <div class="container">
+                <p>
+                    &copy;SISTEM : <a href="/images/refer.html">Reference</a>
+                </p>
+            </div>
+        </section>
+    </div>
+    <!-- footer section -->
+</body>
+
+</html>

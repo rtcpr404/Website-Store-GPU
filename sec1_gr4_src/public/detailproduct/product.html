@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Site Metas -->
+  <link rel="icon" href="/images/fevicon/fevicon.png" type="image/gif" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="/css/style.css" rel="stylesheet" />
+  
+  
+  <title>SISTEM</title>
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="/index.html">
+            <span>
+              SISTEM
+            </span>
+          </a>
+          <div class="navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item ">
+                <a class="nav-link" href="/index.html">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/detailproduct/product.html">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/adminpage/About Us.html"> About</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- product section -->
+
+  <section class="product_section">
+    <div class="container">
+      <div class="product_heading">
+        <h2>
+          Products Graphics Card
+        </h2>
+      </div>
+      <div class="input-group">
+        <input id="search_product_manufac"type="search" class="form-control rounded" placeholder="Search by Manufacturer ex. NVIDIA , AMD" />
+        
+        </div>
+
+        <div class="input-group">
+          <input id="search_product_brand"type="search" class="form-control rounded" placeholder="Search by Brand ex. ASUS MSI " />
+        </div>
+  
+
+          <div class="input-group">
+            <input id="search_product_series"type="search" class="form-control rounded" placeholder="Search by Series ex. RTX4090 RTX4070" />
+          </div>
+          <button type="button" class="form-control rounded" id="search_product_all">All Product</button>
+          <button type="button" class="form-control rounded" id="search_product_by_type">Search</button>  
+
+          
+          <div id="output"><p></p></div>
+      </div>
+      
+
+      <div class="product_container" id="product_container">
+   
+    </div>
+  </section>
+  <!-- end product section -->
+
+  <script>
+    let rootUrl = "http://localhost:8028/product_info/"
+    let serach_product_by_type = document.querySelector("#search_product_by_type");
+    let serach_product_all = document.querySelector("#search_product_all");
+    
+
+    let serach_product_manufac = document.querySelector("#search_product_by_manufacturer");
+    let serach_product_brand = document.querySelector("#search_product_by_brand");
+    let serach_product_series = document.querySelector("#search_product_by_series");
+
+    let input_product_manufac = document.querySelector("#search_product_manufac");
+    let input_product_brand = document.querySelector("#search_product_brand");
+    let input_product_series = document.querySelector("#search_product_series");
+
+    async function callProduct(url, method){
+      let response = await fetch(url, {
+      method: method,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+      });
+      data = await response.json();
+      console.log(data)
+      
+      return data
+    }
+
+function generateHTML(data) {
+          
+    const product_selecter = data.data.map(item => `
+      <style>
+        /* CSS */
+        body {
+        align-items: center;
+      }
+        .product_all_index img {
+          width: 100%; /* กำหนดให้ความกว้างของรูปเต็มกว่าของกล่อง */
+          height: auto; /* กำหนดให้รูปปรับความสูงตามอัตราส่วน */
+      }
+
+      .product_all_index {
+        align-items: center;
+        background-color: #ececec;
+        width: 90px
+      }
+      </style>
+      <body>
+        <div class="product_all_index" style="border-radius: 10px;  padding: 10px; margin: 10px; float: left; width: 20%;">
+          <img src="${item.pic_product}">
+          <h3>${item.name_product}</h3>
+          <h4>Brand : ${item.brand_product}</h4>
+          <h4>Series : ${item.series_product}</h4>
+          <h4>manufacturer : ${item.manufacturer_product}</h4>
+          <h4>Price : ${item.price_product}</h4>
+      </div>
+      </body>
+  `).join('');
+    return product_selecter;
+  }
+
+  if (search_product_by_type) {
+  search_product_by_type.addEventListener("click", () => {
+    input_product_manufac = input_product_manufac.value;
+    input_product_brand = input_product_brand.value;
+    input_product_series = input_product_series.value;
+    console.log(input_product_manufac, input_product_brand ,input_product_series);
+
+      if(input_product_manufac && !input_product_brand && !input_product_series){
+        callProduct(rootUrl + input_product_manufac, "get").then((data) => {
+        console.log(data);
+        if (data.data) {
+          alert("Select by Manufacturer");
+
+          if (Array.isArray(data.data)) {
+            document.getElementById("product_container").innerHTML = generateHTML(data);
+            input_product_manufac.value = "";
+          }
+        } else {
+          alert("Not Found");
+        }
+      });
+    } else if(!input_product_manufac && input_product_brand && !input_product_series){
+      callProduct(rootUrl + input_product_brand, "get").then((data) => {
+        console.log(data);
+        if (data.data) {
+          alert("Select by Brand");
+
+          if (Array.isArray(data.data)) {
+            document.getElementById("product_container").innerHTML = generateHTML(data);
+            input_product_manufac.value = "";
+          }
+        } else {
+          alert("Not Found");
+        }
+      });
+    }else if(!input_product_manufac && !input_product_brand && input_product_series){
+      callProduct(rootUrl + input_product_series, "get").then((data) => {
+        console.log(data);
+        if (data.data) {
+          alert("Select by Series");
+
+          if (Array.isArray(data.data)) {
+            document.getElementById("product_container").innerHTML = generateHTML(data);
+            input_product_manufac.value = "";
+          }
+        } else {
+          alert("Not Found");
+        }
+      });
+    }
+      // }
+  else if (input_product_manufac && input_product_brand && !input_product_series) {
+      callProduct("http://localhost:8028/product_infos/" + input_product_manufac + "/" + input_product_brand, "get").then((data) => {
+        console.log(data);
+        if (data.data) {
+          alert(data.message);
+          if (Array.isArray(data.data)) {
+            document.getElementById("product_container").innerHTML = generateHTML(data);
+            input_product_manufac.value = "";
+          }
+        } else {
+          alert("Not Found");
+        }
+      });
+    }else if (input_product_manufac && input_product_brand && input_product_series){
+      callProduct(rootUrl + input_product_manufac + "/" + input_product_brand +"/"+input_product_series, "get").then((data) => {
+        console.log(data);
+        if (data.data) {
+          alert(data.message);
+          if (Array.isArray(data.data)) {
+            document.getElementById("product_container").innerHTML = generateHTML(data);
+            input_product_manufac.value = "";
+          }
+        } else if (!input_product_manufac && input_product_brand && !input_product_series) {
+          console.log("เข้ามั้ย")
+          callProduct(rootUrl + input_product_brand, "get").then((data) => {
+            console.log(data);
+            if (data.data) {
+              alert(data.message);
+
+              if (Array.isArray(data.data)) {
+                document.getElementById("product_container").innerHTML = generateHTML(data);
+                input_product_brand.value = "";
+              }
+            } else {
+              alert("Not Found");
+            }
+          });
+        }else {
+          alert("Not Found");
+        }
+      });
+    }else if (input_product_manufac && !input_product_brand && input_product_series) {
+      callProduct(rootUrl + input_product_manufac + "/" + input_product_series, "get").then((data) => {
+        console.log(data);
+        if (data.data) {
+          alert(data.message);
+          if (Array.isArray(data.data)) {
+            document.getElementById("product_container").innerHTML = generateHTML(data);
+            input_product_manufac.value = "";
+          }
+        } else {
+          alert("Not Found");
+        }
+      });
+    }else if (!input_product_manufac && input_product_brand && input_product_series) {
+      callProduct("http://localhost:8028/product_information/" + input_product_brand + "/" + input_product_series, "get").then((data) => {
+        console.log(data);
+        if (data.data) {
+          alert(data.message);
+          if (Array.isArray(data.data)) {
+            document.getElementById("product_container").innerHTML = generateHTML(data);
+            input_product_manufac.value = "";
+          }
+        } else {
+          alert("Not Found");
+        }
+      });
+    }
+  });
+}
+    // console.log(input_product_manufac.value)
+      if (serach_product_all) {
+        serach_product_all.addEventListener("click", () => {
+          callProduct(rootUrl, "get").then((data) => {
+
+            if (data.data) {
+              alert(data.message)
+
+              if (Array.isArray(data.data)) {
+
+                document.getElementById("product_container").innerHTML = generateHTML(data);
+              }
+            } else {
+              alert("Not Found")
+            }
+          })
+        })
+        input_product_manufac.value = "";
+      }
+  </script>
+  <!-- service section -->
+
+  <section class="service_section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="/images/service_img/feature-1.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Fast Delivery
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="/images/service_img/feature-2.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Free Delivery
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="/images/service_img/feature-3.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Warranty 3YEAR
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="/images/service_img/feature-4.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                24HR Support
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end service section -->
+
+  <!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      <p>
+        &copy;SISTEM : <a href="/images/refer.html">Reference</a>
+      </p>
+    </div>
+  </section>
+  <!-- footer section -->
+
+</body>
+
+</html>

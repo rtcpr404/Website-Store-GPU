@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="/images/fevicon/fevicon.png" type="image/gif" />
+  <title>Delete Product</title>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+  <link rel="stylesheet" href="/css/css.css">
+</head>
+
+<body>
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="/index.html">
+          <span>
+            SISTEM
+          </span>
+        </a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a class="nav-link" href="/index.html">Home</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/adminpage/add-del-edit-product/edit-product.html">edit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/adminpage/add-del-edit-product/add-product.html"> add</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/adminpage/add-del-edit-product/delete-product.html"> delete</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/main-admin.html"> main</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    </head>
+    <!-- header section end -->
+    <!-- serch strat -->
+    <div class="edit-admin-serch">
+      <div class="edit-admin-select">
+        <form class="edit-adminform-serch">
+          <input type="text" placeholder="Search by Product ID" name="delete-search" id="delete-search" >
+          <button id="find_del-product-button" type="button" >DELETE</button>
+        </form>
+      </div>
+      <!-- serch end -->
+    
+      <!-- list product delete start -->
+
+
+      <div class="edit-product-table" id="edit-prod-table">
+      <!-- <button id="delete-product-button">Delete</button> -->
+      <!-- <button id="delete-product-button" type="button" >ค้นหา</button> -->
+      </div>
+      <!-- list product delete end -->
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <script src="./callProduct.js"></script>
+      <!-- footer section -->
+      <footer>
+        <div class="container">
+          <p>
+            &copy;SISTEM : <a href="/images/refer.html">Reference</a>
+          </p>
+        </div>
+      </footer>
+      <!-- footer section -->
+</body>
+
+
+</html>
